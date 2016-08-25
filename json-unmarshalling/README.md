@@ -4,6 +4,12 @@ In this example we'll see how to read a JSON object from a string (that may be t
 
 If you have a TypeScript model class that contains methods and fields and you want to *"cast"* a JSON object to that class in order to call its methods, you have to inspect your class reflection data in order to apply the right prototype to nested objects.
 
+## Example application
+
+This kind of unmarshalling is essential if you want to use the [Active record pattern](http://www.martinfowler.com/eaaCatalog/activeRecord.html) for example.
+
+## Documentation
+
 In this example we have two classes, `Teacher` and `Student`:
 
 ```TypeScript
