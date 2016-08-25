@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "outDir": "./dist"
+    },
+    "reflectionEnabled": true,
+    "compileOnSave": true,
+    "atom": {
+        "rewriteTsconfig": true
+    },
+    "filesGlob": [
+        "./src/**/*.ts",
+        "./src/**/*.d.ts"
+    ],
+    "files": [
+        "./src/main.ts",
+        "./src/types.ts",
+        "./src/validator.ts"
+    ]
+}
