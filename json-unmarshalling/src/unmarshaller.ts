@@ -1,11 +1,13 @@
 
-
+// main entry point for JSON unmarshalling
 export function unmarshall<T extends any>(json: string, targetClass: Class): T {
     let parsedObject = JSON.parse(json);
     convert(parsedObject, targetClass);
     return <T>parsedObject;
 }
 
+
+// recursive object conversion function. Now it changes the prototype to each nested object.
 function convert(obj: any, targetClass: Class) {
 
     // this can be heavy, but we don't care now. Another approach may be shallow copy,
@@ -17,13 +19,17 @@ function convert(obj: any, targetClass: Class) {
 
     for (let field of fields) {
         if (field.type.kind === "class") {
+            // we have a class type for the current field. Convert it recursively.
             const fieldClass = <Class>field.type;
             convert(obj[field.name], fieldClass);
         } else {
+            // we have an array type for the current field. Convert each member recursively.
             const arrayType = <ArrayType>field.type;
-            const array = <Array<any>>obj[field.name];
-            for(let item of array) {
-                convert(item, arrayType.elementType);
+            if(arrayType.elementType.kind === "class") { // we don't need conversion for interfaces.
+                const array = <Array<any>>obj[field.name];
+                for(let item of array) {
+                    convert(item, arrayType.elementType);
+                }
             }
         }
         // TODO: type references, unions, class expressions...
