@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "target": "ES6",
+        "module": "commonjs",
+        "sourceMap": true,
+        "outDir": "./dist"
+    },
+    "reflectionEnabled": true,
+    "compileOnSave": true,
+    "atom": {
+        "rewriteTsconfig": true
+    },
+    "filesGlob": [
+        "./src/**/*.ts",
+        "./src/**/*.d.ts"
+    ],
+    "files": [
+        "./src/classes.ts",
+        "./src/main.ts",
+        "./src/unmarshaller.ts"
+    ]
+}

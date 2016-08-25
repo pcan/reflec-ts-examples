@@ -1,0 +1,11 @@
+If I understood well your problem, you need to provide some methods to a deserialized JSON object which has `Object` as its prototype. At the moment, this is not possible with plain javascript API, since the content you receive from REST services is a plain string that becomes an object through `JSON.parse`. You should use another deserialization mechanism which is able to inspect your classes at runtime, and re-build their instances from the deserialized JSON. In this way you'll have your fresh JSON objects but with the right prototype that has all the methods for that class. I'll try to make an example.
+
+Let's suppose you're calling a REST endpoint that gives you `Teacher`-like objects. At some point you do `var freshObject = JSON.parse(receivedString)` (actually Angular already do this, but we're going to improve this mechanism); The simplest thing to do (but not the wisest one) is to change the prototype of `freshObject` to `Teacher` prototype: `Object.setPrototypeof(freshObject, Teacher.prototype)`. Now you *can* invoke `Teacher` methods on `freshObject` but this is obviously a shallow change, since the nested objects (`Student`s in this case) still have `Object` as their prototype, and the problem is there again.
+
+Now it's clear that we need something that is able to investigate the `Teacher` class structure **recursively** while re-building the received objects with the right prototypes (actually, instead changing prototypes you may build fresh copies, that should be less heavy). You may want something like: `Teacher.getClass().members` that will give you these information:
+
+ - Name of `students` field
+ - Type of `students` field (`Array<Students>` in this case)
+ - Constructor function of the component class `Student`
+
+If you have this kind of information you can recursively do the same thing we did in the previous example.
