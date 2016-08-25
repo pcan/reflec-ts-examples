@@ -6,7 +6,7 @@ If you have a TypeScript model class that contains methods and fields and you wa
 
 ## Example application
 
-This kind of unmarshalling is essential if you want to use the [Active record pattern](http://www.martinfowler.com/eaaCatalog/activeRecord.html) for example.
+This kind of unmarshalling is essential if you want to use the [Active record pattern](http://www.martinfowler.com/eaaCatalog/activeRecord.html), since you have both data and operation of domain objects.
 
 ## Documentation
 
