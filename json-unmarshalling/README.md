@@ -8,6 +8,21 @@ If you have a TypeScript model class that contains methods and fields and you wa
 
 This kind of unmarshalling is essential if you want to use the [Active record pattern](http://www.martinfowler.com/eaaCatalog/activeRecord.html), since you have both data and operation of domain objects.
 
+## Installing
+Install reflec-ts before building and running the examples.
+
+```shell
+npm install -g reflec-ts
+```
+
+## Building
+In one of the examples folder, run:
+
+```shell
+reflec-tsc -p .
+node dist/main.js
+```
+
 ## Documentation
 
 In this example we have two classes, `Teacher` and `Student`:
