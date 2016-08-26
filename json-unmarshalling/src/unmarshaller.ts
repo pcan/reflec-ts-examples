@@ -14,6 +14,10 @@ function convert(obj: any, targetClass: Class) {
     // since recursion will take care of the deep copy.
     Object.setPrototypeOf(obj, targetClass.getConstructor().prototype);
 
+    if (!targetClass.members) {
+        return; // current class has no members.
+    }
+
     // get all fields of targetClass that are classes or reference to types that may be arrays.
     let fields = targetClass.members.filter(m => m.type.kind === "class" || m.type.kind === "array");
 
