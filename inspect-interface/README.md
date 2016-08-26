@@ -1,4 +1,4 @@
-# Type Validator example
+# Interface inspection example
 
 In this example we'll print all members of a TypeScript `interface`.
 
