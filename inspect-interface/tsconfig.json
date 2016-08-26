@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "target": "ES5",
+        "module": "commonjs",
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "outDir": "./dist"
+    },
+    "reflectionEnabled": true,
+    "compileOnSave": true,
+    "atom": {
+        "rewriteTsconfig": true
+    },
+    "filesGlob": [
+        "./src/**/*.ts",
+        "./src/**/*.d.ts"
+    ],
+    "files": [
+        "./src/main.ts"
+    ]
+}
