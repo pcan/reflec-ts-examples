@@ -10,7 +10,9 @@ export function isValid(object: any, interfaceObj: Interface): boolean {
                 return false;
             } else if (member.type.kind === 'interface' && object[member.name] != null) {
                 // recursively check field type against the corresponding interface
-                return isValid(object[member.name], <Interface>member.type);
+                if(!isValid(object[member.name], <Interface>member.type)) {
+                    return false;
+                }
             }
             // TODO: check class types...
         }
