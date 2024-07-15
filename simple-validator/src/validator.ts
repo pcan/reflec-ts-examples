@@ -1,6 +1,6 @@
 
 // check if an object matches an interface, recursively.
-export function isValid(object: any, interfaceObj: Interface): boolean {
+export function isValid(object: any, interfaceObj: Interface): object is interfaceObj {
 
     if (interfaceObj.members) { // members may be undefined if there are no members.
         for (let member of interfaceObj.members) {
